@@ -2,6 +2,7 @@
 Leet's Grind
 
 1.  [Two Sum](#two-sum)
+2.  [Add Two Numbers](#add-two-numbers)
 2130. [Maximum Twin Sum of a Linked List](#maximum-twin-sum-of-a-linked-list)
 
 ---
@@ -21,6 +22,36 @@ class Solution(object):
                 return [codex[target - n], i]
             codex[n] = i
         return codex
+```
+
+### [[0002] Add Two Numbers](https://leetcode.com/problems/add-two-numbers/)<a name="add-two-numbers"></a>
+```python
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def addTwoNumbers(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        current = head = ListNode(0)
+        carry = 0
+        while (l1 or l2 or carry):
+            sumVal = carry
+            if l1:
+                sumVal += l1.val
+                l1 = l1.next
+            if l2:
+                sumVal += l2.val
+                l2 = l2.next
+            carry = sumVal // 10
+            current.next = ListNode(sumVal % 10)
+            current = current.next
+        return head.next
 ```
 
 ### [[2130] Maximum Twin Sum of a Linked List](https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list/)<a name="maximum-twin-sum-of-a-linked-list"></a>
